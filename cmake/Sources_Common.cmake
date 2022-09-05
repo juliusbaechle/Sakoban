@@ -1,8 +1,10 @@
 set(SOURCES_COMMON
   ${PROJECT_SOURCE_DIR}/src/main.cpp
-  ${PROJECT_SOURCE_DIR}/src/wtestclient.h
-  ${PROJECT_SOURCE_DIR}/src/wtestclient.cpp
-  ${PROJECT_SOURCE_DIR}/src/wtestclient.ui
-  ${PROJECT_SOURCE_DIR}/src/testclient.h
-  ${PROJECT_SOURCE_DIR}/src/testclient.cpp
+  ${PROJECT_SOURCE_DIR}/src/Playground.h
+  ${PROJECT_SOURCE_DIR}/src/GameRules.h
+  ${PROJECT_SOURCE_DIR}/src/GameRules.cpp
+  ${PROJECT_SOURCE_DIR}/src/MainWindow.h
+  ${PROJECT_SOURCE_DIR}/src/MainWindow.cpp
+  ${PROJECT_SOURCE_DIR}/src/MainWindow.ui
+  ${PROJECT_SOURCE_DIR}/src/Level1.h
 )

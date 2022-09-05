@@ -1,27 +1,26 @@
 #include <qapplication.h>
 #include <qwidget.h>
+#include <qdebug.h>
+#include <qdir>
 
-#include "testclient.h"
-#include "wtestclient.h"
-
-#include <qdir.h>
-#include <qfile.h>
-#include <qtextstream.h>
+#include "GameRules.h"
+#include "MainWindow.h"
+#include "Level1.h"
 
 inline QString loadAll(QString a_path) {
   QDir::setCurrent(QApplication::applicationDirPath());
   QFile file(a_path);
   if(!file.open(QIODevice::ReadOnly))
-    return "";
+    qWarning() << "Not able to find '" << a_path << "' in '" << QDir::currentPath() << '\'';
   QTextStream stream(&file);
   return stream.readAll();
 }
 
 int main(int argc, char* argv[]) {
   QApplication app(argc, argv);
-  TestClient client;
-  WTestClient w(client);
-  w.setStyleSheet(loadAll(STYLESHEET_PATH));
-  w.show();
+  GameRules gameRules(level1);
+  MainWindow window (gameRules);
+  window.setStyleSheet(loadAll(STYLESHEET_PATH));
+  window.show();
   return app.exec();
 }
