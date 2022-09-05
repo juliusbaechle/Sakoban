@@ -1,0 +1,3 @@
+set(INCLUDE_DIRS_COMMON
+# ${PROJECT_SOURCE_DIR}/../submodules/LIBREPO/LIBNAME/include
+)

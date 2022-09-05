@@ -1,0 +1,143 @@
+* {
+  background: transparent;
+  padding: 0px;
+  margin: 0px;
+  spacing: 5px;
+  font-size: 15px;
+}
+
+QMainWindow {
+  background: #333;
+}
+
+QGroupBox {
+  background: #222;
+  color: white;
+  font-size: 18px;
+  border: 1px solid #AAA;
+    margin-top: 15px;
+  padding-top: 10px;
+  border-radius: 5px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+QCheckBox::indicator {
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  border: 2px solid #666;
+}
+
+QCheckBox::indicator:!checked {
+  background-color: qradialgradient(cx: 0.5, cy: 0.6, radius: 2, fx: 0.5, fy: 0.4,
+    stop: 0 rgba(255,150,150,255), stop: 0.25 rgba(255,30,30,200), stop: 0.4 rgba(255,30,30,32));
+}
+
+QCheckBox::indicator:checked {
+  background-color: qradialgradient(cx: 0.5, cy: 0.6, radius: 2, fx: 0.5, fy: 0.4,
+    stop: 0 rgba(150,255,150,255), stop: 0.25 rgba(30,255,30,160), stop: 0.4 rgba(30,255,30,32));
+}
+
+QPushButton, QLineEdit, QSpinBox {
+  border: 1px solid black;
+  background: #444;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  border: 1px solid #AAA;
+}
+
+QPushButton:pressed {
+  margin: 1px;
+  background: #555;
+}
+
+QPushButton:disabled, QLineEdit:disabled {
+  color: #777;
+  background: #333;
+  border: 1px solid #555;
+}
+
+QSpinBox {
+  min-width: 80px;
+  max-width: 80px;
+}
+
+QLabel {
+  color: white;
+  font-size: 17px;
+}
+
+QTextEdit {
+  color: white;
+  margin-top: 10px;
+  font-size: 15px;
+  background: #222;
+  border: 1px solid #AAA;
+}
+
+QScrollBar:vertical {
+  border: none;
+  background: #383838;
+  width: 25px;
+  margin: 25px 0px 25px 0px;
+  padding: 5px 0px 5px 0px;
+}
+
+QScrollBar::handle:vertical {
+  background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 #333, stop: 0.5 #666, stop:1 #333);
+  min-height: 20px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: #383838;
+}
+
+QScrollBar::add-line:vertical {
+  background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 #444, stop: 0.5 #AAA, stop:1 #444);
+  height: 25px;
+  subcontrol-position: bottom;
+  subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical {
+  background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+    stop: 0 #444, stop: 0.5 #AAA, stop:1 #444);
+  height: 25px;
+  subcontrol-position: top;
+  subcontrol-origin: margin;
+}
+
+QToolTip {
+  background-color: #333;
+  color: white;
+  border-radius: 1px;
+  border: 1px solid #111;
+}
+
+QMenu {
+  background-color: #333;
+  border: 1px solid #111;
+}
+
+QMenu::item:disabled { color: #666; }
+QMenu::item:disabled:selected { color: #666; }
+QMenu::item:enabled { color: #CCC; }
+QMenu::item:selected { color: #FFF; }
+
+QMenu::separator {
+  height: 2px;
+  background: #555;
+  margin-left: 5px;
+  margin-right: 5px;
+}
