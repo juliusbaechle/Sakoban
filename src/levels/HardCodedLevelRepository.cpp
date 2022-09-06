@@ -44,7 +44,3 @@ Playground HardCodedLevelRepository::get(int a_level) {
     return m_levels[a_level];
   return m_levels.first();
 }
-
-QList<Playground> HardCodedLevelRepository::getAll() {
-  return m_levels.values();
-}
