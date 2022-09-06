@@ -22,11 +22,11 @@ source_group("Levels" FILES ${SOURCES_LEVELS})
 set(SOURCES_SAKOBAN
   ${PROJECT_SOURCE_DIR}/src/main.cpp
   ${PROJECT_SOURCE_DIR}/src/Playground.h
-  ${PROJECT_SOURCE_DIR}/src/GameRules.h
-  ${PROJECT_SOURCE_DIR}/src/GameRules.cpp
-  ${PROJECT_SOURCE_DIR}/src/MainWindow.h
-  ${PROJECT_SOURCE_DIR}/src/MainWindow.cpp
-  ${PROJECT_SOURCE_DIR}/src/MainWindow.ui
+  ${PROJECT_SOURCE_DIR}/src/Sakoban.h
+  ${PROJECT_SOURCE_DIR}/src/Sakoban.cpp
+  ${PROJECT_SOURCE_DIR}/src/SakobanUI.h
+  ${PROJECT_SOURCE_DIR}/src/SakobanUI.cpp
+  ${PROJECT_SOURCE_DIR}/src/SakobanUI.ui
   ${PROJECT_SOURCE_DIR}/src/ILevelRepository.h
 )
 source_group("Sakoban" FILES ${SOURCES_SAKOBAN})

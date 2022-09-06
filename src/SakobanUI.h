@@ -1,19 +1,19 @@
 #pragma once
 
 #include <QMainWindow>
-#include "GameRules.h"
+#include "Sakoban.h"
 class QLabel;
 
 namespace Ui {
-  class MainWindow;
+  class SakobanUI;
 }
 
-class MainWindow : public QMainWindow {
+class SakobanUI : public QMainWindow {
   Q_OBJECT
 
 public:
-  explicit MainWindow(GameRules& a_gameRules, QWidget *parent = nullptr);
-  ~MainWindow();
+  explicit SakobanUI(Sakoban& a_sakoban, QWidget *parent = nullptr);
+  ~SakobanUI();
 
 protected:
   void keyPressEvent(QKeyEvent* e) override;
@@ -25,7 +25,7 @@ private:
   QString toString(QFlags<FieldValue> a_value);
 
 private:
-  GameRules& m_gameRules;
+  Sakoban& m_sakoban;
   QMap<QPoint, QLabel*> m_labels;
-  Ui::MainWindow *ui;
+  Ui::SakobanUI *ui;
 };

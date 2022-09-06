@@ -3,8 +3,8 @@
 #include <qdebug.h>
 #include <qdir>
 
-#include "GameRules.h"
-#include "MainWindow.h"
+#include "Sakoban.h"
+#include "SakobanUI.h"
 #include "levels/HardCodedLevelRepository.h"
 
 inline QString loadAll(QString a_path) {
@@ -19,8 +19,8 @@ inline QString loadAll(QString a_path) {
 int main(int argc, char* argv[]) {
   QApplication app(argc, argv);
   HardCodedLevelRepository repo;
-  GameRules gameRules(repo, 5);
-  MainWindow window (gameRules);
+  Sakoban sakoban (repo, 1);
+  SakobanUI window (sakoban);
   window.setStyleSheet(loadAll(STYLESHEET_PATH));
   window.show();
   return app.exec();

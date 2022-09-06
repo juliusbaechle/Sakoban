@@ -11,11 +11,11 @@ enum class Direction {
   Left
 };
 
-class GameRules : public QObject {
+class Sakoban : public QObject {
   Q_OBJECT
 
 public:
-  GameRules(ILevelRepository& a_repo, int a_level = 1);
+  Sakoban(ILevelRepository& a_repo, int a_level = 1);
   void move(Direction a_direction);
   void resetLevel();
 

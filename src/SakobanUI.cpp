@@ -1,28 +1,28 @@
-#include "MainWindow.h"
-#include "ui_MainWindow.h"
+#include "SakobanUI.h"
+#include "ui_SakobanUI.h"
 #include <qpushbutton.h>
 #include <QKeyEvent>
 #include <qlabel.h>
 #include <qstyle.h>
 
-MainWindow::MainWindow(GameRules& a_gameRules, QWidget *parent) :
+SakobanUI::SakobanUI(Sakoban& a_sakoban, QWidget *parent) :
   QMainWindow(parent),
-  ui(new Ui::MainWindow),
-  m_gameRules(a_gameRules)
+  ui(new Ui::SakobanUI),
+  m_sakoban(a_sakoban)
 {
   ui->setupUi(this);
   setupLabels();
-  QObject::connect(&m_gameRules, &GameRules::sglPlaygroundChanged, this, &MainWindow::onPlaygroundChanged);
-  QObject::connect(&m_gameRules, &GameRules::sglLevelChanged, this, &MainWindow::onLevelChanged);
-  onPlaygroundChanged(m_gameRules.playground());
-  onLevelChanged(m_gameRules.level());
+  QObject::connect(&m_sakoban, &Sakoban::sglPlaygroundChanged, this, &SakobanUI::onPlaygroundChanged);
+  QObject::connect(&m_sakoban, &Sakoban::sglLevelChanged, this, &SakobanUI::onLevelChanged);
+  onPlaygroundChanged(m_sakoban.playground());
+  onLevelChanged(m_sakoban.level());
 }
 
-MainWindow::~MainWindow() {
+SakobanUI::~SakobanUI() {
   delete ui;
 }
 
-void MainWindow::setupLabels() {
+void SakobanUI::setupLabels() {
   for(int x = 0; x < 9; x++) {
     for(int y = 0; y < 9; y++) {
       QLabel* label = new QLabel(this);
@@ -33,12 +33,12 @@ void MainWindow::setupLabels() {
   }
 }
 
-void MainWindow::onLevelChanged(int a_level) {
+void SakobanUI::onLevelChanged(int a_level) {
   setWindowTitle(QString("Sakoban - Level %1").arg(a_level));
-  onPlaygroundChanged(m_gameRules.playground());
+  onPlaygroundChanged(m_sakoban.playground());
 }
 
-void MainWindow::onPlaygroundChanged(const Playground& a_playground) {
+void SakobanUI::onPlaygroundChanged(const Playground& a_playground) {
   for(int x = 0; x < 9; x++) {
     for(int y = 0; y < 9; y++) {
       QPoint p (x, y);
@@ -54,7 +54,7 @@ void MainWindow::onPlaygroundChanged(const Playground& a_playground) {
   }
 }
 
-QString MainWindow::toString(QFlags<FieldValue> a_value) {
+QString SakobanUI::toString(QFlags<FieldValue> a_value) {
   if(a_value.testFlag(FieldValue::Space) && a_value.testFlag(FieldValue::Target))
     return "target";
   if(a_value.testFlag(FieldValue::Box) && a_value.testFlag(FieldValue::Target))
@@ -70,16 +70,16 @@ QString MainWindow::toString(QFlags<FieldValue> a_value) {
   return "background";
 }
 
-void MainWindow::keyPressEvent(QKeyEvent* e) {
+void SakobanUI::keyPressEvent(QKeyEvent* e) {
   if(e->key() == Qt::Key::Key_Up)
-    m_gameRules.move(Direction::Up);
+    m_sakoban.move(Direction::Up);
   if(e->key() == Qt::Key::Key_Right)
-    m_gameRules.move(Direction::Right);
+    m_sakoban.move(Direction::Right);
   if(e->key() == Qt::Key::Key_Down)
-    m_gameRules.move(Direction::Down);
+    m_sakoban.move(Direction::Down);
   if(e->key() == Qt::Key::Key_Left)
-    m_gameRules.move(Direction::Left);
+    m_sakoban.move(Direction::Left);
   if(e->key() == Qt::Key::Key_R)
-    m_gameRules.resetLevel();
+    m_sakoban.resetLevel();
   QMainWindow::keyPressEvent(e);
 }
