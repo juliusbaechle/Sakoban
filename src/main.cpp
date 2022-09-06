@@ -5,7 +5,7 @@
 
 #include "GameRules.h"
 #include "MainWindow.h"
-#include "Level1.h"
+#include "levels/HardCodedLevelRepository.h"
 
 inline QString loadAll(QString a_path) {
   QDir::setCurrent(QApplication::applicationDirPath());
@@ -18,7 +18,8 @@ inline QString loadAll(QString a_path) {
 
 int main(int argc, char* argv[]) {
   QApplication app(argc, argv);
-  GameRules gameRules(level1);
+  HardCodedLevelRepository repo;
+  GameRules gameRules(repo, 5);
   MainWindow window (gameRules);
   window.setStyleSheet(loadAll(STYLESHEET_PATH));
   window.show();

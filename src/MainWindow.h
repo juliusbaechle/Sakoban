@@ -20,9 +20,9 @@ protected:
 
 private:
   void setupLabels();
-
-private slots:
-  void update();
+  void onLevelChanged(int a_level);
+  void onPlaygroundChanged(const Playground& a_playground);
+  QString toString(QFlags<FieldValue> a_value);
 
 private:
   GameRules& m_gameRules;
