@@ -15,7 +15,7 @@ class Sakoban : public QObject {
   Q_OBJECT
 
 public:
-  Sakoban(ILevelRepository& a_repo, int a_level = 1);
+  Sakoban(ILevelRepository& a_repo, int a_level = 7);
   void move(Direction a_direction);
   void resetLevel();
 

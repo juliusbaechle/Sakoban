@@ -5,10 +5,10 @@
   font-size: 15px;
 }
 
-[value =    "background" ] { image: url(z:/Sakoban/icons/background.png); }
-[value =        "player" ] { image: url(z:/Sakoban/icons/player.png); }
-[value =          "wall" ] { image: url(z:/Sakoban/icons/wall.png); }
-[value =         "space" ] { image: url(z:/Sakoban/icons/space.png); }
-[value =        "target" ] { image: url(z:/Sakoban/icons/target.png); }
-[value =           "box" ] { image: url(z:/Sakoban/icons/box.png); }
-[value = "box on target" ] { image: url(z:/Sakoban/icons/box_target.png); }
+[value =    "background" ] { image: url(icons/background.png); }
+[value =        "player" ] { image: url(icons/player.png); }
+[value =          "wall" ] { image: url(icons/wall.png); }
+[value =         "space" ] { image: url(icons/space.png); }
+[value =        "target" ] { image: url(icons/target.png); }
+[value =           "box" ] { image: url(icons/box.png); }
+[value = "box on target" ] { image: url(icons/box_target.png); }

@@ -26,7 +26,7 @@ option(ENABLE_COVERAGE "Enable a Code Coverage build." OFF)
 option(ENABLE_BENCHMARKING "Enable a benchmark build." OFF)
 option(ENABLE_LTO "Enable Link Time Optimization (LTO)." OFF)
 option(ENABLE_DOXYGEN "Enable documentation project." OFF)
-option(DEVELOP "Stylesheet relative to project or to executable" OFF)
+option(DEVELOP "Stylesheet relative to project or to executable" ON)
 
 ##### Deployment #####
 if (NOT DEPLOY_DIR)
@@ -34,9 +34,9 @@ if (NOT DEPLOY_DIR)
     message("-- ${PROJECT}: Deploys to \"${DEPLOY_DIR}\"")
 endif()
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${DEPLOY_DIR}/bin)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${DEPLOY_DIR}/lib)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${DEPLOY_DIR}/arc)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${DEPLOY_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${DEPLOY_DIR})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${DEPLOY_DIR})
 
 ##### CMake modules #####
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/)
@@ -57,7 +57,7 @@ set(CODE_COVERAGE_APP ${PROJECT}_CodeCoverage)
 set(BENCHMARK_APP ${PROJECT}_Benchmarks)
 
 ##### Add first-party libraries #####
-add_executable(${PROJECT} ${SOURCES_COMMON} icons/sakoban.rc)
+add_executable(${PROJECT} ${SOURCES_COMMON} src/icons/sakoban.rc)
 target_include_directories(${PROJECT} PUBLIC ${PROJECT_SOURCE_DIR}/src)
 target_link_libraries(${PROJECT} PUBLIC ${LIBS_ALL} ${PROJECT_LIB})
 
@@ -65,8 +65,12 @@ if(DEVELOP)
   target_compile_definitions(${PROJECT} PRIVATE STYLESHEET_PATH="${PROJECT_SOURCE_DIR}/src/style.qss")
 else()
   target_compile_definitions(${PROJECT} PRIVATE STYLESHEET_PATH="style.qss")
-  file(COPY "src/style.qss" DESTINATION ${DEPLOY_DIR})
 endif()
+
+file(COPY "src/style.qss" DESTINATION ${DEPLOY_DIR})
+
+file(GLOB ICONS "${PROJECT_SOURCE_DIR}/icons/*.png")
+file(COPY ${ICONS} DESTINATION ${DEPLOY_DIR}/icons)
 
 if(NOT UNIX)
   target_link_options(${PROJECT} PRIVATE -mwindows)

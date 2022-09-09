@@ -19,7 +19,7 @@ inline QString loadAll(QString a_path) {
 int main(int argc, char* argv[]) {
   QApplication app(argc, argv);
   HardCodedLevelRepository repo;
-  Sakoban sakoban (repo, 1);
+  Sakoban sakoban (repo);
   SakobanUI window (sakoban);
   window.setStyleSheet(loadAll(STYLESHEET_PATH));
   window.show();
