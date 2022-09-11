@@ -69,7 +69,7 @@ endif()
 
 file(COPY "src/style.qss" DESTINATION ${DEPLOY_DIR})
 
-file(GLOB ICONS "${PROJECT_SOURCE_DIR}/icons/*.png")
+file(GLOB ICONS "${PROJECT_SOURCE_DIR}/src/icons/*.png")
 file(COPY ${ICONS} DESTINATION ${DEPLOY_DIR}/icons)
 
 if(NOT UNIX)
